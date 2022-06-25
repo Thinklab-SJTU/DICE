@@ -1,0 +1,47 @@
+data_root: ./data
+
+batch_size: 128
+test_batch_size: 128
+
+# model path 
+ARCH: causal_v0
+BACK_ARCH: WideResNet
+
+PRETRAINED_PATH: 
+
+MODEL:
+  X_S_WHOLE: True
+  CONF_SET_SIZE: 20
+  CONF_BUFFER_SIZE: 10000
+  CONF_MODE: input
+  HID_CHANNELS: 640
+  CONF_CLEAN: False
+
+ATTACK:
+  LOSS_TYPE: tar
+  CONFOUNDING_WAY: mc
+  SIM_TYPE: clean
+  EVAL_EPSILON: 8
+  EVAL_STEP: 100
+  EVAL_ALPHA: 2
+
+TRAIN: 
+  MODE: causal_adv
+  LR_DECAY: 0.10
+  LR_STEP: 
+    - 100
+    - 105
+  DO_Y: False
+  CAUSAL_REG : 1.
+  CAUSAL_SURRO: adv
+  GRAD_PRE_WAY: std
+  GRAD_MASK_WAY: hard
+  GRAD_POOLING: max
+  GRAD_ATT_R: 0.6
+  # disable it during inference
+  BNeval: False
+
+DATASET:
+  MODE: clean
+
+EVAL: True

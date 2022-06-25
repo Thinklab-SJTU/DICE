@@ -1,0 +1,53 @@
+data_root: ./data
+
+batch_size: 128
+test_batch_size: 128
+
+# hyper parameters for training 
+epochs: 110
+opt_level: O1
+lr: 0.1
+lr_mode: 'piecewise'
+weight_decay: 0.0005
+
+# model backbone
+ARCH: causal_v0
+BACK_ARCH: WideResNet
+
+MODEL:
+  X_S_WHOLE: True
+  ATTN_SIZE: 10
+  CONF_SET_SIZE: 10
+  CONF_BUFFER_SIZE: 4096
+  CONF_MODE: input
+  HID_CHANNELS: 640
+  CONF_CLEAN: False
+  CONF_ADV: True
+  CONF_ADV_ATT: True
+
+ATTACK:
+  LOSS_TYPE: untar
+  CONFOUNDING_WAY: mc
+  STEP: 1
+  EPSILON: 8.
+  ALPHA: 8.
+
+TRAIN: 
+  MODE: causal_attack
+  LR_DECAY: 0.10
+  LR_STEP: 
+    - 100
+    - 105
+  CAUSAL_REG: 1.
+  CAUSAL_SURRO: clean
+  GRAD_PRE_WAY: std
+  GRAD_MASK_WAY: hard
+  GRAD_POOLING: max
+  GRAD_ATT_R: 0.5
+  # disable it during inference
+  BNeval: True
+
+DATASET:
+  MODE: clean
+
+EVAL: False

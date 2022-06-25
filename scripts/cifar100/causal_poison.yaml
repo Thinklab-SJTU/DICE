@@ -1,0 +1,51 @@
+data_root: ./data
+
+batch_size: 128
+test_batch_size: 128
+
+epochs: 110
+opt_level: O1
+lr: 0.1
+lr_mode: 'piecewise'
+weight_decay: 0.0002
+
+ARCH: causal_v0
+BACK_ARCH: WideResNet
+
+MODEL:
+  X_S_WHOLE: True
+  ATTN_SIZE: 100
+  CONF_SET_SIZE: 100
+  CONF_BUFFER_SIZE: 10000
+  CONF_MODE: input
+  HID_CHANNELS: 640
+
+ATTACK:
+  LOSS_TYPE: untar
+  SIM_TYPE: clean
+  STEP: 1
+  EPSILON: 8.
+  ALPHA: 8.
+
+TRAIN: 
+  MODE: causal_poison
+  LR_DECAY: 0.10
+  LR_STEP: 
+    - 100
+    - 105
+  DO_Y: False
+  CAUSAL_REG : 1
+  CAUSAL_SURRO: clean
+  GRAD_PRE_WAY: std
+  GRAD_MASK_WAY: hard
+  GRAD_POOLING: max
+  GRAD_ATT_R: 0.6
+  # disable it during inference
+  BNeval: False
+
+DATASET:
+  NAME: CIFAR100
+  NUM_CLASSES: 100
+  MODE: clean
+
+EVAL: True
