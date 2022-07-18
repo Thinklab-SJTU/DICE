@@ -17,8 +17,8 @@ Code for [KDD 2022](http://kdd.org/kdd2022/index.html/) Paper: "DICE: Domain-att
 4. `model/` contains the necessary modules of our DICE model with the series of baseline backbones.
 5. `poison/` is about adversarial poisoning generation and evaluation, modified based on [adversarial poisons](https://github.com/lhfowl/adversarial_poisons), which implements our poison attack with DICE.
 
-## What is new in the code
-![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) Instead of stopping the gradient flow of the confounding branch shown in the paper, a useful trick is to allow such flow through the backbone and update the backbone parameters together with the gradient flow of causal branch. We apply this trick to all the downstream tasks to further boost performance of DICE.
+<!-- ## What is new in the code
+![#c5f015](https://via.placeholder.com/15/c5f015/000000?text=+) Instead of stopping the gradient flow of the confounding branch shown in the paper, a useful trick is to allow such flow through the backbone and update the backbone parameters together with the gradient flow of causal branch. We apply this trick to all the downstream tasks to further boost performance of DICE. -->
 
 <!-- 6. We include the specific configurations of DICE for different downstream tasks in ``scripts/``, namely ``causal.yaml`` for attack transferability, ``causal_poison.yaml`` for data poisoning, and ``causal_adv.yaml`` for adversarial robustness. -->
 

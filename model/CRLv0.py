@@ -119,7 +119,7 @@ class CausalRLNetwork(nn.Module):
         else:
             x_v_att = self.can(x_s, x_v_set, self.no_att, norm)
 
-        x_v_att = x_v_att.detach()
+        # x_v_att = x_v_att.detach()
 
         if conf_prior:
             return x_s, x_v, x_v_att, conf_pred, delta_x

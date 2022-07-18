@@ -20,13 +20,6 @@ MODEL:
   CONF_MODE: input
   HID_CHANNELS: 640
 
-ATTACK:
-  LOSS_TYPE: untar
-  SIM_TYPE: clean
-  STEP: 1
-  EPSILON: 8.
-  ALPHA: 8.
-
 TRAIN: 
   MODE: causal_poison
   LR_DECAY: 0.10
@@ -34,7 +27,7 @@ TRAIN:
     - 100
     - 105
   DO_Y: False
-  CAUSAL_REG : 1
+  CAUSAL_REG : 1.
   CAUSAL_SURRO: clean
   GRAD_PRE_WAY: std
   GRAD_MASK_WAY: hard

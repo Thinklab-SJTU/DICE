@@ -292,6 +292,8 @@ def train_causal_attack(model, device, train_loader, causal_opt, conf_opt, epoch
         conf_opt.zero_grad()
 
         x_s, x_v, x_v_att, _ = model.split_x(data, target)
+        # x_v_att = x_v_att.detach()
+
         # perform gradient-based attacks on the intervened data: x_do
         # causal do intervention 
         x_do = x_s + x_v_att.detach()

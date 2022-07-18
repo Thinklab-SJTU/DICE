@@ -80,7 +80,7 @@ def parse_args(description):
         cfg.MODULE = None
     
     if args.exp_name is None:
-        if cfg.TRAIN.MODE == 'causal':
+        if cfg.TRAIN.MODE == 'causal_poison':
             causal_str = 'reg_{}'.format(cfg.TRAIN.CAUSAL_REG)
             exp_name = '{}_{}_on_{}_{}'.format(args.prefix, cfg.TRAIN.MODE, cfg.BACK_ARCH, causal_str)
         elif cfg.TRAIN.MODE == 'causal_attack' or cfg.TRAIN.MODE == 'causal_adv':

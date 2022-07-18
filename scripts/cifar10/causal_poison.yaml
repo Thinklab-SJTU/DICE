@@ -25,14 +25,6 @@ MODEL:
   CONF_ADV: False
   CONF_ADV_ATT: False
 
-# poison hyper-parameters 
-ATTACK:
-  LOSS_TYPE: tar
-  CONFOUNDING_WAY: mc 
-  STEP: 1
-  EPSILON: 8.
-  ALPHA: 8.
-
 TRAIN: 
   MODE: causal_poison
   LR_DECAY: 0.10
