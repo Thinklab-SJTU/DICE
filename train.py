@@ -292,7 +292,6 @@ def train_causal_attack(model, device, train_loader, causal_opt, conf_opt, epoch
         conf_opt.zero_grad()
 
         x_s, x_v, x_v_att, _ = model.split_x(data, target)
-        # x_v_att = x_v_att.detach()
 
         # perform gradient-based attacks on the intervened data: x_do
         # causal do intervention 
@@ -342,12 +341,12 @@ def train_causal_attack(model, device, train_loader, causal_opt, conf_opt, epoch
         acc_causal = (causal_pred.max(1)[1] == target).sum().item() / target.size(0)
 
         conf_opt.zero_grad()
+        causal_opt.zero_grad()
 
         # minimize the confounding loss on the confounding branch
         conf_loss.backward()
         conf_opt.step()
 
-        causal_opt.zero_grad()
         # minimize the toal loss on the backbone and the causal branch 
         total_loss.backward()
         causal_opt.step()
